@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Tully Monster</title>
+    <style>
+      body {font-family: arial, "sans-serif";}
+    </style>
+  </head>
+  <body>
+    <h1>The Tully Monster</h1>
+
+    <p>
+      The Tully Monster is a fossilised creature believed to have lived 300
+      million years ago. It was discovered by and named after Francis Tully in
+      1958.
+    </p>
+
+    <img src="TullyMonster.png" />
+
+    <h2>Questions</h2>
+
+    <div id="questions"></div>
+
+    <script>
+      class Question {
+        constructor(id, question, correctAnswer) {
+          this.id = id
+          this.question = question
+          this.correctAnswer = correctAnswer
+        }
+
+        onSubmit = (e) => {
+          const providedAnswer = this.inputElement.value
+          const isCorrect =
+            providedAnswer.toLowerCase() === this.correctAnswer.toLowerCase()
+
+          const message = isCorrect ? "Correct!" : "Incorrect"
+          alert(message)
+          e.preventDefault()
+        }
+
+        insertToDOM(parent) {
+          const form = document.createElement("form")
+          form.id = this.id
+
+          this.questionText = document.createElement("div")
+          this.questionText.innerText = this.question
+          form.append(this.questionText)
+
+          this.inputElement = document.createElement("input")
+          this.inputElement.placeholder = "Type your answer..."
+          form.append(this.inputElement)
+
+          const button = document.createElement("button")
+          button.innerText = "Check"
+          form.append(button)
+
+          form.addEventListener("submit", this.onSubmit)
+          parent.append(form)
+        }
+      }
+
+      const questions = [
+        new Question("q1", "How long was the Tully Monster?", "35cm"),
+        new Question("q2", "Where did it live?", "USA"),
+      ]
+
+      const questionsParent = document.querySelector("#questions")
+      questions.forEach((question) => question.insertToDOM(questionsParent))
+    </script>
+  </body>
+</html>

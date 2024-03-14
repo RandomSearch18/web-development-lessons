@@ -1,0 +1,59 @@
+html {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b0/Tour_Eiffel_3c02660.jpg");
+    background-size: contain;
+    background-attachment: fixed;
+}
+
+body {
+    margin: 0;
+    /* background: #121212; */
+    /* color: white; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+article {
+    padding: 1em;
+    max-width: min(50em);
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+    background: rgb(255, 255, 255, 0.3);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+#main-photo {
+    filter: sepia(100%) hue-rotate(150deg) brightness(80%) saturate(420%);
+    animation: grayscale-fun 2s infinite;
+}
+
+@keyframes grayscale-fun {
+    0% {
+        filter: sepia(100%) hue-rotate(0deg) brightness(80%) saturate(420%);
+    }
+
+    50% {
+        filter: sepia(100%) hue-rotate(180deg) brightness(80%) saturate(420%);
+    }
+
+    100% {
+        filter: sepia(100%) hue-rotate(360deg) brightness(80%) saturate(420%);
+    }
+}
+
+.bottom-right {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 20em;
+    backdrop-filter: blur(10px);
+    margin: 0.25em;
+    padding: 0.5em;
+    border-radius: 8px;
+    background: rgb(137, 207, 240, 0.5)
+}
+
+.live-chat details[open] {
+    padding: 0.5em;
+}
